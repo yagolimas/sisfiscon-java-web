@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Cadastrar Fornecedor</title>
+</h:head>
+<h:body>
+	<h1>Cadastrar Fornecedor</h1>
+	
+	<h:form id="formFornecedor">
+		<p:growl id="msgs" showDetail="true" />
+		<div>
+			
+			<p:panel id="panelFornecedor" header="Fornecedor"
+				style="margin-bottom:20px">
+
+				<h:panelGrid columns="2" cellpadding="3">
+
+					<p:outputLabel value="CNPJ:" for="cnpj" />
+					<p:inputMask id="cnpj" value="#{fornecedorBean.fornecedor.cnpj}"
+						mask="99.999.999/9999-99" required="true"
+						requiredMessage="CNPJ obrigatório" maxlength="14"/>
+
+					<p:outputLabel value="Razão Social:" for="razaoSocial" />
+					<p:inputText id="razaoSocial"
+						value="#{fornecedorBean.fornecedor.razaoSocial}" required="true"
+						requiredMessage="Razão Social obrigatório" maxlength="200"/>
+
+					<p:outputLabel value="Inscrição Municipal:"
+						for="inscricaoMunicipal" />
+					<p:inputMask id="inscricaoMunicipal"
+						value="#{fornecedorBean.fornecedor.inscricaoMunicipal}"
+						required="true" requiredMessage="Inscrição Municipal obrigatório"
+						mask="9.999.999-9"  maxlength="8"/>
+
+					<p:outputLabel value="Receita Bruta:" for="receitaBruta" />
+					<p:inputText id="receitaBruta"
+						value="#{fornecedorBean.fornecedor.receitaBruta}" required="true"
+						requiredMessage="Receita Bruta obrigatório">
+						<f:convertNumber pattern="#,##0.00" type="currency" />
+					</p:inputText>
+
+				</h:panelGrid>
+			</p:panel>
+		</div>
+		<div>
+			<p:panel id="panelEndereco" header="Endereço"
+				style="margin-bottom:20px">
+				<h:panelGrid columns="2" cellspading="3">
+
+					<p:outputLabel value="Logradouro:" for="logradouro" />
+					<p:inputText id="logradouro"
+						value="#{fornecedorBean.fornecedor.endereco.logradouro}"
+						required="true" requiredMessage="Logradouro obrigatório" maxlength="100"/>
+						
+					<p:outputLabel value="Número:" for="numero" />
+					<p:inputText id="numero"
+						value="#{fornecedorBean.fornecedor.endereco.numero}"
+						required="true" requiredMessage="Número obrigatório" maxlength="50"/>
+
+					<p:outputLabel value="Complemento:" for="complemento" />
+					<p:inputText id="complemento"
+						value="#{fornecedorBean.fornecedor.endereco.complemento}"
+						required="true" requiredMessage="Complemento obrigatório" maxlength="50" />
+
+					<p:outputLabel value="Bairro:" for="bairro" />
+					<p:inputText id="bairro"
+						value="#{fornecedorBean.fornecedor.endereco.bairro}"
+						required="true" requiredMessage="Bairro obrigatório" maxlength="100" />
+
+					<p:outputLabel value="Municipio:" for="municipio" />
+					<p:inputText id="municipio"
+						value="#{fornecedorBean.fornecedor.endereco.municipio}"
+						required="true" requiredMessage="Municipio obrigatório" maxlength="200"/>
+
+					<p:outputLabel value="Cep:" for="cep" />
+					<p:inputMask id="cep"
+						value="#{fornecedorBean.fornecedor.endereco.cep}" mask="99999-999"
+						required="true" requiredMessage="Cep obrigatório" maxlength="8"/>
+
+					<p:outputLabel value="UF:" for="uf" />
+					<h:selectOneMenu id="uf" required="true"
+						value="#{fornecedorBean.fornecedor.endereco.uf}"
+						style="width:150px" requiredMessage="Estado obrigatório">
+						<f:selectItems value="#{fornecedorBean.uf}" />
+					</h:selectOneMenu>
+
+				</h:panelGrid>
+			</p:panel>
+		</div>
+		<div>
+			<p:commandButton value="Salvar" ajax="false"
+				action="#{fornecedorBean.salvar}" update="@form" process="@form"/>
+		</div>
+	</h:form>
+
+</h:body>
+</html>

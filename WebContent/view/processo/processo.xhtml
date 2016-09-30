@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Criar Processo</title>
+</h:head>
+<h:body>
+	<h1>Cadastrar Processo</h1>
+	<h:form id="formCnpj">
+		<div>
+			<p:growl id="msgs" showDetail="true" />
+			<p:panel id="panelFornecedor" header="Fornecedor"
+				style="margin-bottom:20px">
+				<h:panelGrid columns="4" cellpadding="3">
+					<p:outputLabel value="CNPJ do Fornecedor:" for="cnpj" />
+					<p:inputMask id="cnpj" disabled="#{processoBean.editable == true}" 
+						value="#{processoBean.processo.fornecedor.cnpj}"
+						mask="99.999.999/9999-99" required="true"
+						requiredMessage="CNPJ obrigatório" maxlength="14" />
+					<p:commandButton value="Buscar" ajax="false" icon="ui-icon-search"
+						action="#{processoBean.buscarFornecedor(processoBean.processo.fornecedor.cnpj)}"
+						update="@form" disabled="#{processoBean.editable == true}"/>
+					<br/>
+					<h:outputText
+						value="#{processoBean.processo.numero}"
+						id="textNumero" />
+					<h:outputText
+						value="#{processoBean.processo.fornecedor.cnpj}"
+						id="textCnpj" />
+					<h:outputText
+						value="#{processoBean.processo.fornecedor.razaoSocial}"
+						id="textRazao" />
+					<h:outputText
+						value="#{processoBean.processo.fornecedor.inscricaoMunicipal}"
+						id="textIncricao" />
+				</h:panelGrid>
+			</p:panel>
+		</div>
+	</h:form>
+	<h:form id="formProcesso">
+		<div>
+			<p:panel id="panelProcesso" header="Informações sobre o processo"
+				style="margin-bottom:20px">
+				<h:panelGrid columns="2" cellpadding="3">
+
+					<p:outputLabel value="Relato da Fiscalização:"
+						for="relatoFiscalizacao" />
+					<p:inputText id="relatoFiscalizacao"
+						value="#{processoBean.processo.relatoFiscalizacao}"
+						required="true"
+						requiredMessage="Relato de Fiscalização obrigatório">
+						<!-- <f:passThroughAttribute name="placeholder" value="Relato da Fisacalização"/> -->
+					</p:inputText>
+
+					<p:outputLabel value="Data do Relato:" for="dataRelato" />
+					<p:calendar id="dataRelato"
+						value="#{processoBean.processo.dataRelato.time}"
+						timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" mask="true"/>
+
+					<p:outputLabel value="Fiscal Responsável:" for="fiscalResponsavel" />
+					<p:inputText id="fiscalResponsavel"
+						value="#{processoBean.processo.fiscalResponsavel}" required="true"
+						requiredMessage="Fiscal Responsável obrigatório">
+						<f:validateLength maximum="100" />
+					</p:inputText>
+
+				</h:panelGrid>
+			</p:panel>
+		</div>
+		<div>
+			<p:commandButton value="Salvar" action="#{processoBean.gravar}"
+				update="@form" process="@form" />
+		</div>
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_av2_sisfiscon" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e40b1f3e-98ec-42ab-b35e-cdadad577cd3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="idProcesso" class="java.lang.String"/>
+	<field name="relatoFiscalizacao" class="java.lang.String"/>
+	<field name="dataRelato" class="java.lang.String"/>
+	<field name="fiscalResponsavel" class="java.lang.String"/>
+	<group name="Group1">
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group3">
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group4">
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="5f688ec7-088f-4fc5-92ea-8cbf6514e172"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="89325f5f-f6e4-497d-b471-d84ce8243a95"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[SISFISCON]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="5c1f7b65-88bd-4bd2-a30e-e82d003081a0"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Relatório de Processos]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="183" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="7be801ed-4664-415c-a54b-521d56639fd9"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Processos]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="be400c7b-f7c0-4285-8873-f380463156dd"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="172">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="2e9a655d-bdd9-40e1-9e3d-46a655b08a6e"/>
+			</line>
+			<textField>
+				<reportElement x="138" y="38" width="96" height="20" uuid="3d38d5c5-f072-4128-864d-8e6d8503d607"/>
+				<textFieldExpression><![CDATA[$F{idProcesso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="58" width="237" height="20" uuid="32f3991d-330d-4ba0-bc40-0c75bed492e5"/>
+				<textFieldExpression><![CDATA[$F{relatoFiscalizacao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="78" width="164" height="20" uuid="86f4eb80-c7bf-495d-bd5d-f8e908d96fb3"/>
+				<textFieldExpression><![CDATA[$F{dataRelato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="98" width="164" height="20" uuid="0cd41028-009e-4c90-8290-a688b15f65bd"/>
+				<textFieldExpression><![CDATA[$F{fiscalResponsavel}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="38" width="138" height="20" uuid="5b5fe5ce-4f63-41a0-851f-ec07e809ecbb"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="58" width="138" height="20" uuid="9af1150d-4fd6-40da-8a18-5ffa204f2193"/>
+				<text><![CDATA[Relato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="78" width="138" height="20" uuid="7f600ed2-6366-4786-a30f-707ab36206fa"/>
+				<text><![CDATA[Data do Relato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="98" width="138" height="20" uuid="4988b56b-844b-4b0b-8b11-06d2c48aa7a1"/>
+				<text><![CDATA[Fiscal ]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="2ae37cc3-7418-4422-b960-69d23ded67b0"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="5a08b617-a206-48cc-b53a-ba33c1737aa3"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="7c34f6e3-aa54-4656-a373-31c3219c81a4"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Lista de Processos</title>
+</h:head>
+<h:body>
+	<h1>Lista de Processos</h1>
+	
+	<h:form>	
+		
+		<p:commandButton value="Novo" icon="ui-icon-plus" action="#{processoBean.formProcesso}" immediate="true"/>		
+			    
+	    <p:commandButton value="Emitir" icon="ui-icon-document" action="#{relatorioBean.gerarRelatorioFilmes}"/>
+	    
+	</h:form>
+	
+	<br/>
+	<p:dataTable id="tabelaProcesso" value="#{processoBean.processos}" var="processo">
+		
+		<p:column headerText="Nº Processo">
+			<h:outputText value="#{processo.numero}"/>
+		</p:column>
+		
+		<p:column headerText="Razão Social" style="text-align: center;">
+			<h:outputText value="#{processo.fornecedor.razaoSocial}" />
+		</p:column>
+		
+		<p:column headerText="CNPJ" style="text-align: center;">
+			<h:outputText value="#{processo.fornecedor.cnpj}" />
+		</p:column>
+		
+		<p:column headerText="Fiscal Responsável" style="text-align: center;">
+			<h:outputText value="#{processo.fiscalResponsavel}" />
+		</p:column>
+		
+		<p:column headerText="Data do Relato" style="text-align: center;">
+			<h:outputText value="#{processo.dataRelato.time}">
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+			</h:outputText>
+		</p:column>
+		
+		<p:column headerText="Opções" exportable="false">
+			<h:form style="text-align: center;">
+				
+				<p:commandButton value="Edit" icon="ui-icon-pencil"
+					action="#{processoBean.editar(processo)}" immediate="true" />
+			
+				<p:commandButton update="@form" value="Delete" icon="ui-icon-trash"
+					action="#{processoBean.remover(processo)}">
+					<p:confirm header="Confirmarção"
+						message="Tem certeza que deseja remover o processo: ?"
+						icon="ui-icon-alert" />
+				</p:commandButton>			
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+					<p:commandButton title="GDelYesButton" value="Sim"
+						styleClass="ui-confirmdialog-yes" />
+					<p:commandButton title="GDelNoButton" value="Não"
+						styleClass="ui-confirmdialog-no" />
+				</p:confirmDialog>
+				
+			</h:form>
+		</p:column>
+		
+	</p:dataTable>
+	</h:body>
+</html>
