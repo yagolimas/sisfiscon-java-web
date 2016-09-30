@@ -3,14 +3,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:b="http://bootsfaces.net/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>SISFISCON</title>
 </h:head>
 <h:body>
+	<h1>SIFISCON</h1>
 	<div>
-		<a href="fornecedor/fornecedor.xhtml">Fornecedor</a> <a
-			href="processo/processo.xhtml">Processo</a>
+		<p:tabMenu activeIndex="#{param.i}">
+			<p:menuitem value="Fornecedor" outcome="fornecedor/lista-fornecedor.xhtml"/>
+			<p:menuitem value="Processo" outcome="processo/lista-processo.xhtml"/>			
+		</p:tabMenu>
 	</div>
 </h:body>
 </html>
